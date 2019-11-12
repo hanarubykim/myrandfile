@@ -3,18 +3,19 @@
 #include <unistd.h>
 #include <errno.h>
 #include <fcntl.h>
+#include <sys/stat.h>
 
 //A function that generates a random number by reading in
 //the correct number of bytes from /dev/random
 
 int randomly(){
-  int i = open("/dev/random", O_RDONLY);
+  int i = open("/dev/urandom", O_RDONLY);
   int num;
   //check for error
+  read(i, &num, sizeof(int));
   if(errno){
     printf("Yikes!\nError number: %d\t Error message: %s\n", errno, strerror(errno));
   }
-  read(i, &num, sizeof(int));
   close(i);
 
   return i;
@@ -33,8 +34,8 @@ int main(){
     }
     else{
       printf("%d]", randArray[i]);
+      printf("\n+++++++++++++++++++++\n\n");
     }
-    printf("\n+++++++++++++++++++++\n");
   }
 
 //Writes the array to a file
