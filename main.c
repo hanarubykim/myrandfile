@@ -56,7 +56,8 @@ int main(){
   }
   read(reading, &diffArray, sizeof(diffArray));
   printf("\n+++++++++++++++++++++\n\n");
-  //Prints out the contents of the second array to verify the random numbers are the same from step 1
+
+//Prints out the contents of the second array to verify the random numbers are the same from step 1
   printf("Verification that written values were the same:\n");
   int wee;
   printf("Second array: [");
